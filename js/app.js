@@ -24,9 +24,10 @@
 
 //Convert provided enemy class to ES6
 class Enemy {
-  constructor(x, y){
+  constructor(x, y, speed){
     this.x = x;
     this.y = y;
+    this.speed = speed;
     this.sprite = 'images/enemy-bug.png';
   }
 
@@ -39,8 +40,10 @@ class Enemy {
     // all computers.
     if (this.x >= canvas.width) {
       this.x = -101; //101 is width of bug images
+      // change to random speed from 100-500  
+      this.speed = Math.random()*400 + 100;
     } else {
-      this.x += 100*dt;
+      this.x += this.speed*dt;
     }
   };
 
@@ -108,9 +111,9 @@ class Player {
 
 // Instantiate objects.
 const player = new Player();
-const enemy1 = new Enemy(0,55);
-const enemy2 = new Enemy(0,140);
-const enemy3 = new Enemy(0,225);
+const enemy1 = new Enemy(-101,55,300);
+const enemy2 = new Enemy(-101,140,200);
+const enemy3 = new Enemy(-101,225,100);
 const allEnemies = [enemy1,enemy2,enemy3];
 
 // This listens for key presses and sends the keys to your
