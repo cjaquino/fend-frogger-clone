@@ -24,12 +24,14 @@
 
 //Convert provided enemy class to ES6
 class Enemy {
-  constructor(){
+  constructor(x, y){
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
+    this.x = x;
+    this.y = y;
     this.sprite = 'images/enemy-bug.png';
   }
 
@@ -44,8 +46,8 @@ class Enemy {
   // Draw the enemy on the screen, required method for game
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
 }
-
 
 
 
@@ -59,13 +61,16 @@ class Enemy {
 // a handleInput() method.
 class Player {
   constructor(){
-    // The image/sprite for our player
+    const _initX = 202;
+    const _initY = 387;
     this.sprite = 'images/char-boy.png';
+    this.x = _initX;
+    this.y = _initY;
   }
 
   // Update the player's position
-  // Parameter: dt, a time delta between ticks FIXME: is this needed for player?
-  update(dt) {
+  // Parameter: dt, a time delta between ticks
+  update() {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
@@ -74,13 +79,22 @@ class Player {
   // Draw the player on the screen
   render() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
+  }
+
+  handleInput() {
+
+  }
 }
+
 
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
-
-
+const player = new Player();
+const enemy1 = new Enemy(0,55);
+// const enemy2 = new Enemy();
+// const enemy3 = new Enemy();
+const allEnemies = [enemy1];
 
 // This listens for key presses and sends the keys to your
 // Player.handleInput() method. You don't need to modify this.
