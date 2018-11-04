@@ -1,28 +1,3 @@
-// Udacity provided code (ES5)
-// Enemies our player must avoid
-// var Enemy = function() {
-//     // Variables applied to each of our instances go here,
-//     // we've provided one for you to get started
-//
-//     // The image/sprite for our enemies, this uses
-//     // a helper we've provided to easily load images
-//     this.sprite = 'images/enemy-bug.png';
-// };
-//
-// // Update the enemy's position, required method for game
-// // Parameter: dt, a time delta between ticks
-// Enemy.prototype.update = function(dt) {
-//     // You should multiply any movement by the dt parameter
-//     // which will ensure the game runs at the same speed for
-//     // all computers.
-// };
-//
-// // Draw the enemy on the screen, required method for game
-// Enemy.prototype.render = function() {
-//     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-// };
-
-//Convert provided enemy class to ES6
 class Enemy {
   constructor(x, y, speed){
     this.x = x;
@@ -40,11 +15,18 @@ class Enemy {
     // all computers.
     if (this.x >= canvas.width) {
       this.x = -101; //101 is width of bug images
-      // change to random speed from 100-500  
+      // change to random speed from 100-500
       this.speed = Math.random()*400 + 100;
     } else {
       this.x += this.speed*dt;
     }
+
+    //collision detection
+    if (player.y == this.y && player.x >= this.x && player.x < this.x + 70) {
+      player.x = 202;
+      player.y = 397;
+    }
+
   };
 
   // Draw the enemy on the screen, required method for game
@@ -58,7 +40,7 @@ class Enemy {
 class Player {
   constructor(){
     const _initX = 202;
-    const _initY = 387;
+    const _initY = 397;
     let x = _initX;
     let y = _initY;
     this.sprite = 'images/char-boy.png';
@@ -83,6 +65,7 @@ class Player {
         // console.log("Up key pressed");
         if (this.y > 0) {
           this.y -= 85;
+          console.log(this.y);
         }
         break;
       case 'down':
@@ -108,12 +91,11 @@ class Player {
   }
 }
 
-
 // Instantiate objects.
 const player = new Player();
-const enemy1 = new Enemy(-101,55,300);
-const enemy2 = new Enemy(-101,140,200);
-const enemy3 = new Enemy(-101,225,100);
+const enemy1 = new Enemy(-101,57,300);
+const enemy2 = new Enemy(-101,142,200);
+const enemy3 = new Enemy(-101,227,150);
 const allEnemies = [enemy1,enemy2,enemy3];
 
 // This listens for key presses and sends the keys to your
