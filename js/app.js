@@ -50,9 +50,11 @@ class Player {
   constructor(){
     const _initX = 202;
     const _initY = 387;
+    let x = _initX;
+    let y = _initY;
     this.sprite = 'images/char-boy.png';
-    this.x = _initX;
-    this.y = _initY;
+    this.x = x;
+    this.y = y;
   }
 
   // Update the player's position
@@ -65,8 +67,25 @@ class Player {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 
-  handleInput() {
-
+  handleInput(key) {
+    switch (key) {
+      case 'up':
+        console.log("Up key pressed");
+        this.y = this.y - 85;
+        break;
+      case 'down':
+        console.log("Down key pressed");
+        this.y = this.y + 85;
+      break;
+      case 'left':
+        console.log("Left key pressed");
+        this.x = this.x - 101;
+        break;
+      case 'right':
+        console.log("Right key pressed");
+        this.x = this.x + 101;
+      break;
+    }
   }
 }
 
