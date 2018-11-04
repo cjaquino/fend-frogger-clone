@@ -33,9 +33,15 @@ class Enemy {
   // Update the enemy's position
   // Parameter: dt, a time delta between ticks
   update(dt) {
+    const canvas = document.querySelector('canvas');
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
+    if (this.x >= canvas.width) {
+      this.x = -101; //101 is width of bug images
+    } else {
+      this.x += 100*dt;
+    }
   };
 
   // Draw the enemy on the screen, required method for game
