@@ -65,7 +65,6 @@ class Player {
         // console.log("Up key pressed");
         if (this.y > 0) {
           this.y -= 85;
-          console.log(this.y);
         }
         break;
       case 'down':
