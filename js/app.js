@@ -68,22 +68,32 @@ class Player {
   }
 
   handleInput(key) {
+    const canvas = document.querySelector('canvas');
     switch (key) {
       case 'up':
-        console.log("Up key pressed");
-        this.y = this.y - 85;
+        // console.log("Up key pressed");
+        if (this.y > 0) {
+          this.y -= 85;
+        }
         break;
       case 'down':
-        console.log("Down key pressed");
-        this.y = this.y + 85;
+        // console.log("Down key pressed");
+        //387 is strating position
+        if (this.y < 387) {
+          this.y += 85;
+        }
       break;
       case 'left':
-        console.log("Left key pressed");
-        this.x = this.x - 101;
+        // console.log("Left key pressed");
+        if (this.x > 0) {
+          this.x -= 101;
+        }
         break;
       case 'right':
-        console.log("Right key pressed");
-        this.x = this.x + 101;
+        // console.log("Right key pressed");
+        if (this.x < canvas.width-101) {
+          this.x += 101;
+        }
       break;
     }
   }
