@@ -22,7 +22,7 @@ class Enemy {
     }
 
     //collision detection and reset player position
-    if (player.y == this.y && player.x >= this.x && player.x < this.x + 70) {
+    if (player.y == this.y && player.x >= this.x - 70 && player.x < this.x + 70) {
       player.x = 202;
       player.y = 397;
     }
