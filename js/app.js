@@ -21,7 +21,7 @@ class Enemy {
       this.x += this.speed*dt;
     }
 
-    //collision detection andreset player position
+    //collision detection and reset player position
     if (player.y == this.y && player.x >= this.x && player.x < this.x + 70) {
       player.x = 202;
       player.y = 397;
@@ -35,20 +35,14 @@ class Enemy {
   }
 }
 
-// This class requires an update(), render() and
-// a handleInput() method.
 class Player {
   constructor(){
-    const _initX = 202;
-    const _initY = 397;
-    let x = _initX;
-    let y = _initY;
     this.sprite = 'images/char-boy.png';
-    this.x = x;
-    this.y = y;
+    this.x = 202;
+    this.y = 397;
   }
 
-  // check for win condition
+  // check for win condition and display modal if condition is met
   update() {
     const modal = document.querySelector('.modal');
     if (this.y == -28) {
@@ -63,6 +57,8 @@ class Player {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
   }
 
+  // takes key code from event listener and moves the
+  // player accordingly
   handleInput(key) {
     const canvas = document.querySelector('canvas');
     switch (key) {
@@ -113,6 +109,8 @@ document.addEventListener('keyup', function(e) {
   player.handleInput(allowedKeys[e.keyCode]);
 });
 
+// lsitens for a key press on the play again button
+// and closes the modal if pressed
 document.getElementById('btn-play-again').addEventListener('click', function(){
   const modal = document.querySelector('.modal');
   modal.style.display = 'none';
