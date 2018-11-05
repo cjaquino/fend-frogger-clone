@@ -53,6 +53,8 @@ class Player {
     const modal = document.querySelector('.modal');
     if (this.y == -28) {
       modal.style.display = 'block';
+      this.x = 202;
+      this.y = 397;
     }
   };
 
@@ -115,5 +117,9 @@ document.addEventListener('keyup', function(e) {
 });
 
 document.getElementById('btn-play-again').addEventListener('click', function(){
-  // console.log("button presed");
+  // console.log("button pressed");
+  const modal = document.querySelector('.modal');
+  // console.log(modal);
+  modal.style.display = 'none';
+
 });
