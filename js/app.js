@@ -117,9 +117,7 @@ document.addEventListener('keyup', function(e) {
 });
 
 document.getElementById('btn-play-again').addEventListener('click', function(){
-  // console.log("button pressed");
   const modal = document.querySelector('.modal');
-  // console.log(modal);
   modal.style.display = 'none';
 
 });
