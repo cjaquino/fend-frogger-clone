@@ -21,7 +21,7 @@ class Enemy {
       this.x += this.speed*dt;
     }
 
-    //collision detection
+    //collision detection andreset player position
     if (player.y == this.y && player.x >= this.x && player.x < this.x + 70) {
       player.x = 202;
       player.y = 397;
@@ -67,27 +67,24 @@ class Player {
     const canvas = document.querySelector('canvas');
     switch (key) {
       case 'up':
-        // console.log("Up key pressed");
         if (this.y > 0) {
           this.y -= 85;
           console.log(this.y);
         }
         break;
       case 'down':
-        // console.log("Down key pressed");
-        //387 is strating position
+        //387 is starting position
         if (this.y < 387) {
           this.y += 85;
         }
       break;
       case 'left':
-        // console.log("Left key pressed");
+      console.log("Left key pressed");
         if (this.x > 0) {
           this.x -= 101;
         }
         break;
       case 'right':
-        // console.log("Right key pressed");
         if (this.x < canvas.width-101) {
           this.x += 101;
         }
