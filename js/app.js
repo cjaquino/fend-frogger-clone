@@ -113,3 +113,7 @@ document.addEventListener('keyup', function(e) {
 
   player.handleInput(allowedKeys[e.keyCode]);
 });
+
+document.getElementById('btn-play-again').addEventListener('click', function(){
+  // console.log("button presed");
+});
